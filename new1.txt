@@ -1,0 +1,86 @@
+function Height(Tree,1)
+depth <- 1
+max <- 0
+if Tree is not null
+	if Tree.left not null
+	    Height(T.left,depth+1)
+	if Tree.right not null
+		Height(T.right,depth+1)
+	
+if depth > max
+    max <- depth
+return max
+
+function Height(Tree)
+if Tree is not null
+	left <- Height(Tree.left)
+	right <- Height(Tree.right)
+	if left > right 
+		return left+1
+	else 
+	    return right+1
+else 
+	return 0
+	
+function setBalanceFactor(Tree)
+for each node v in Tree
+	t is the tree with root v
+	m <- Height(t.left)
+	n <- Height(t.right)
+	factor <- m-n-----absolute value of (m-n)
+	t.bal <- factor
+	
+3.
+function setBalanceFactor(Tree)
+if Tree is not null
+	left <- setBalanceFactor(Tree.left)
+	right <- setBalanceFactor(Tree.right)
+	Tree.bal <- left - right	
+	if left > right
+		return left + 1
+	else 	
+		return right + 1
+else 
+	return 0
+	
+
+
+	
+	
+4.(1)
+function topSort(V,E)
+initialize empty list L
+mark each node in V with 0
+for each node v in V
+	topological(v)
+	
+function topological(node)
+	if node is not marked
+		mark node with 1
+		for each n in V with edge from node to n
+			topological(n)
+		add node to L		
+
+function longestSequence(V,E)
+	List <- topSort(V,E)
+	array distance[]
+	array fromPoint[]
+	initialize all elements in distance[] with 0
+	for each node m in L 
+		for each adjacent out-degree node n of m
+			distance[n]=max(distance[n],distance[m]+1)
+		    (n,m) <- argmax(distance[n],distance[m]+1)
+			fromPoint[n] <- m
+	return fromPoint[]
+			
+
+(2)	
+function smallestLabel(V,E)
+	topSort(V,E)
+	m <- ¡Þ
+function find(node) -----node in the topSotred List
+	if node.next not null 
+		if node.next.label < m 
+			m <- node.next.label
+		Find(node.next)
+	else return m
